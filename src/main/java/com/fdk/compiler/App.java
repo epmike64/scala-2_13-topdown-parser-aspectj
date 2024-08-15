@@ -11,15 +11,11 @@ import java.io.FileReader;
 import java.net.URL;
 import java.nio.file.Paths;
 
-/**
- * Hello world!
- */
 public class App {
 	static char[] getChars(String s) {
 		BufferedReader reader = null;
 
 		try {
-//			URL resource2 = App.class.getResource("../../../");
 			URL resource = App.class.getResource("../../../parsingtest/Point.scala");
 			File f = Paths.get(resource.toURI()).toFile();
 			reader = new BufferedReader(new FileReader(f));
