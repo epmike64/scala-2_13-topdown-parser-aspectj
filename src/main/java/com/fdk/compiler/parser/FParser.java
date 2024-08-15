@@ -17,10 +17,11 @@ public class FParser {
 
 	public FParser(IFLexer lexer) {
 		this.lexer = lexer;
-		this.token = lexer.nextToken();
+		next();
 	}
 
 	public void next() {
+		System.out.println("ACCEPTED=[" + token + "]");
 		token = lexer.nextToken();
 		System.out.println("Next=[" + token + "]");
 	}
@@ -1188,7 +1189,12 @@ public class FParser {
 	}
 
 	public boolean p_modifier() {
-		return p_localModifier() || p_accessModifier() || isToken(OVERRIDE);
+		if(isToken(OVERRIDE)) {
+			next();
+			return true;
+		} else {
+			return p_localModifier() || p_accessModifier();
+		}
 	}
 
 	public boolean p_localModifier() {

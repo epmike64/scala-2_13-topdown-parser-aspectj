@@ -20,7 +20,11 @@ public class ParserAspect {
 		for (int i = 0; i < level; i++) {
 			System.out.print("  ");
 		}
-		System.out.println("    < " + proceedingJoinPoint.getSignature().getName() + " " + value);
+		if(value != null && value instanceof Boolean && value == Boolean.TRUE) {
+			System.out.println("    < " + proceedingJoinPoint.getSignature().getName() + " TRUE");
+		} else {
+			System.out.println("    < " + proceedingJoinPoint.getSignature().getName() + " " + value);
+		}
 		level--;
 		return value;
 	}
